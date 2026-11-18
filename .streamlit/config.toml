@@ -4,7 +4,13 @@ base = "dark"
 backgroundColor = "#0E1217"
 primaryColor = "#F2A900"
 textColor = "#F2EEE6"
-secondaryBackgroundColor = "#1B212B"
+secondaryBackgroundColor = "#18202A"
+# system fonts only (nothing downloaded): Segoe UI Variable on Windows 11, SF Pro on macOS
+font = "'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+headingFont = "'Segoe UI Variable Display', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+baseRadius = "12px"
+borderColor = "#263040"
+showWidgetBorder = true
 
 [browser]
 gatherUsageStats = false      # no telemetry / internet calls

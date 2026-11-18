@@ -115,22 +115,22 @@ Wi-Fi can be off. The sidebar (Strictness) starts collapsed; open it with the `>
 ## On stage: click-by-click script (about 6 minutes)
 
 Before you start: run `python check_demo.py` (all PASS), start the app, full screen,
-switch shows **SafeGuard ON**, Strictness at **50**, Incident log empty (restart the app to
+the **SafeGuard layer** switch shows **ON** (blue), Strictness at **50**, Incident log empty (restart the app to
 clear it). If the screen says HALTED, press **Reset**.
 
 | # | Click | What the audience sees | What you say |
 |---|---|---|---|
 | 1 | **P1 · Clean stop** | Blue banner **✔ ANSWER: Stop**, 20/20 passes agree | "On a clear day it works. And with SafeGuard ON it also tells us it is sure: all 20 looks agree." |
-| 2 | Click the switch → label says **SafeGuard OFF** | Blue **ANSWER: Stop** "SafeGuard OFF · one pass…" | "This is the plain model. Same answer. So far, no difference." |
+| 2 | SafeGuard layer → **OFF** (turns grey) | Blue **ANSWER: Stop**, kicker "SafeGuard OFF · no safety checks", all three checks greyed out as *not checked* | "This is the plain model. Same answer. So far, no difference." |
 | 3 | **P2 · Foggy sign** (still OFF) | The same stop sign in fog; blue **ANSWER: Speed limit (30km/h)**, 83% | "Now fog. The plain model is 83% sure this stop sign is a speed limit. It never trained on fog, and it has no way to say 'I don't know'." |
-| 4 | Click the switch → **SafeGuard ON** | Amber **⚠ UNCERTAIN → handing control to a human**; vote chart: 9 passes say 30 km/h, 8 say not a sign | "SafeGuard looks 20 times with different neurons switched off. Only 9 of 20 agree, so it hands control to a human instead of guessing." |
+| 4 | SafeGuard layer → **ON** (turns blue) | Amber **UNCERTAIN → handing control to a human**; the checklist shows ✗ confidence 38% (needs 60%) and ✗ 9/20 agree (needs 11/20); the 20-square vote grid lights up in mixed colours | "SafeGuard looks 20 times with different neurons switched off. Only 9 of 20 agree, so it hands control to a human instead of guessing." |
 | 5 | Drag **Severity** to 0, then back to 70 | Blue ANSWER: Stop at 0, amber UNCERTAIN again at 70 | "It answers when it can, and steps back when it can't." |
 | 6 | **P3 · Not a sign** | Red **⏹ SAFE STOP: this is not a traffic sign** | "This is a dog. (Optional: switch OFF - the plain model says 'Yield', 99.99% sure. Switch back ON.) SafeGuard refuses to act." |
-| 7 | Big red **STOP** | Red **SYSTEM HALTED — SAFE STATE**; clicking presets changes nothing | "Article 14 of the EU AI Act: a human must be able to stop the system. This really halts it - the model is not even called." |
+| 7 | Big red **STOP** | Pulsing red **SYSTEM HALTED — SAFE STATE**, the header chip turns to *System halted*, the camera image greys out; clicking presets changes nothing | "Article 14 of the EU AI Act: a human must be able to stop the system. This really halts it - the model is not even called." |
 | 8 | **Reset** | Normal again | "Only a human can bring it back." |
 | 9 | Tab **Incident log** → **Download incident log (CSV)** | Every UNCERTAIN, SAFE STOP, STOP and RESET with time and scores | "Honest incident reporting: every time it stepped back, it wrote it down." |
-| 10 | Tab **Price of safety**, move the slider | Coverage goes down as accuracy goes up | "Safety has a price: it answers fewer images, but the answers it gives are right." |
-| 11 | Tab **Confidence vs reality** | Confidence stays high while accuracy collapses | "The gap between being sure and being right. That gap is why fail-safes exist." |
+| 10 | Tab **Price of safety**, move the slider | The white dot slides along the curve: coverage goes down as accuracy goes up (optional: *Use this strictness in the live demo*) | "Safety has a price: it answers fewer images, but the answers it gives are right." |
+| 11 | Tab **Confidence vs reality** (switch Fog / Noise / Blur / Darkness) | Blue confidence line stays above the amber accuracy line; the red band is the gap | "The gap between being sure and being right. That gap is why fail-safes exist." |
 
 If something looks wrong: press **Reset**, check Strictness is **50**, press the preset again.
 The same image and severity always give exactly the same result.
@@ -143,7 +143,7 @@ The same image and severity always give exactly the same result.
 |---|---|
 | `safeguard.py` | Class names, image pipeline, corruptions, the CNN, MC dropout, decision rule, STOP flag and incident log. No Streamlit code. |
 | `prepare.py` | Download → train → calibrate → evaluate → charts → presets → summary. |
-| `app.py` | The Streamlit screen only. Calls `safeguard.py`. |
+| `app.py` | The Streamlit screen only. Calls `safeguard.py`. One CSS block (design system) + small HTML helpers for the verdict banner, decision checklist and 20-pass vote grid; interactive charts use Streamlit's bundled Altair/Vega (offline). |
 | `check_demo.py` | Automated stage rehearsal. |
 | `.streamlit/config.toml` | Dark theme, no telemetry, no file watcher. |
 

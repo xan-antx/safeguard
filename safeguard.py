@@ -294,6 +294,7 @@ def mc_summary(probs):
         "mutual_info": float(entropy(p_mean) - entropy(probs, axis=1).mean()),
         "p_not_sign": float(p_mean[NOT_SIGN]),
         "votes": np.bincount(votes, minlength=N_CLASSES),
+        "pass_preds": votes,                            # what each of the 20 passes said
     }
 
 
@@ -380,7 +381,7 @@ class SafeGuard:
             result = {"status": ANSWER, "pred": pred, "label": CLASS_NAMES[pred],
                       "conf": conf, "top3": top_k(probs), "safeguard_on": False,
                       "agreement": None, "mutual_info": None, "p_not_sign": None,
-                      "votes": None}
+                      "votes": None, "pass_preds": None}
         else:
             tau_conf, tau_agree = thresholds_for_strictness(
                 strictness, self.tau_conf_cal, self.tau_agree_cal)
@@ -391,6 +392,7 @@ class SafeGuard:
                       "conf": s["conf"], "top3": top_k(s["p_mean"]), "safeguard_on": True,
                       "agreement": s["agreement"], "mutual_info": s["mutual_info"],
                       "p_not_sign": s["p_not_sign"], "votes": s["votes"],
+                      "pass_preds": s["pass_preds"],
                       "tau_conf": tau_conf, "tau_agree": tau_agree}
         result["latency_ms"] = (time.perf_counter() - t0) * 1000.0
         return result
