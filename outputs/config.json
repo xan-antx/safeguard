@@ -1,0 +1,9 @@
+{
+  "tau_conf": 0.6,
+  "tau_agree": 0.55,
+  "T": 20,
+  "target_accuracy": 0.97,
+  "val_coverage": 0.6854666666666667,
+  "val_accuracy": 0.9708227971211827,
+  "val_items": 7500
+}

@@ -1,0 +1,14 @@
+# downloaded datasets and generated files (re-create with: python prepare.py)
+data/
+outputs/
+# local virtual environment
+.venv/
+__pycache__/
+*.pyc
+!outputs/
+outputs/*
+!outputs/model.pt
+!outputs/config.json
+!outputs/presets.json
+!outputs/demo_images/
+!outputs/*.png

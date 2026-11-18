@@ -1,0 +1,9 @@
+# CPU builds are fine. For the smaller CPU-only torch download, install torch first with:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+torchvision>=0.17
+streamlit>=1.40
+pillow>=10.0
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.8

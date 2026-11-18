@@ -1,0 +1,42 @@
+{
+  "P2": {
+    "title": "Foggy sign fools the AI",
+    "image": "demo_images/p2.png",
+    "corruption": "fog",
+    "severity": 70,
+    "true_label": 14,
+    "true_name": "Stop",
+    "source": "GTSRB test image #11477",
+    "off_label": "Speed limit (30km/h)",
+    "off_conf": 0.8329512476921082,
+    "on_status": "UNCERTAIN",
+    "on_agreement": 0.45,
+    "on_conf": 0.3813242018222809
+  },
+  "P1": {
+    "title": "Clean stop sign",
+    "image": "demo_images/p1.png",
+    "corruption": "fog",
+    "severity": 0,
+    "true_label": 14,
+    "true_name": "Stop",
+    "source": "GTSRB test image #11477",
+    "on_status": "ANSWER",
+    "on_conf": 0.9995700716972351,
+    "same_sign_as_p2": true
+  },
+  "P3": {
+    "title": "Not a sign",
+    "image": "demo_images/p3.png",
+    "corruption": "fog",
+    "severity": 0,
+    "true_label": 43,
+    "true_name": "not a sign",
+    "source": "CIFAR-10 test image #899 (dog)",
+    "off_label": "Yield",
+    "off_conf": 0.9999994039535522,
+    "on_status": "SAFE STOP",
+    "on_p_not_sign": 0.9583560228347778
+  },
+  "_notes": []
+}

@@ -1,0 +1,21 @@
+# Streamlit settings for the SafeGuard demo (dark, high-contrast, fully offline)
+[theme]
+base = "dark"
+backgroundColor = "#0E1217"
+primaryColor = "#F2A900"
+textColor = "#F2EEE6"
+secondaryBackgroundColor = "#1B212B"
+
+[browser]
+gatherUsageStats = false      # no telemetry / internet calls
+
+[server]
+address = "localhost"         # only this laptop can open the app, and Streamlit does not go
+                              # online to look up an "External URL" at start-up
+headless = true               # no first-run e-mail prompt; open http://localhost:8501 yourself
+fileWatcherType = "none"      # don't watch files during the talk (also avoids torch warnings)
+runOnSave = false
+
+[client]
+toolbarMode = "minimal"       # hide the developer menu / deploy button on the projector
+showErrorDetails = true
